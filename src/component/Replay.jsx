@@ -2,19 +2,6 @@ import React from "react";
 import { LikeFilled } from "@ant-design/icons";
 import { DateCalculator } from "../helper/date-method";
 
-const str = "afsaneh  @Ali Afsaneh @zahra Afsaneh";
-console.log(
-  str
-    .slice(str.indexOf("@"))
-    .split(" ")
-    .find((item) => {
-      if (item.startsWith("@")) {
-        console.log(item);
-      } else {
-        console.log(item);
-      }
-    })
-);
 export default function Replay({ replies, id, date, handelLikeReplay }) {
   const commentDate = new Date(date);
   const currentDate = new Date();
@@ -39,10 +26,9 @@ export default function Replay({ replies, id, date, handelLikeReplay }) {
           <div>
             {item.text.split(" ").map((item) => {
               if (item.charAt(0) != "@") {
-                return <span className="text-gray-500">{`${item}`+" "}</span>;
-              }
-              else if (item.charAt(0) === "@"){
-                return <span className="text-sky-600">{`${item}`+" "}</span>;
+                return <span className="text-gray-500">{`${item}` + " "}</span>;
+              } else if (item.charAt(0) === "@") {
+                return <span className="text-sky-600">{`${item}` + " "}</span>;
               }
             })}
           </div>
