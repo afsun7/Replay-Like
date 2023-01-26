@@ -66,11 +66,14 @@ export default function Comment({
         <div className="flex flex-col items-start text-start leading-8">
           <div className="text-xl">{user.name}</div>
           <div className="text-sm text-gray-400 inline">{DaysAgo}</div>
-          <div className="text-gray-400">
-            {text.slice(0, text.indexOf("@"))}
-            <span className="text-sky-500">
-              {text.slice(text.indexOf("@"))}
-            </span>
+          <div>
+            {text.split(" ").map((item) => {
+              if (item.charAt(0) != "@") {
+                return <span className="text-gray-500">{`${item}` + " "}</span>;
+              } else if (item.charAt(0) === "@") {
+                return <span className="text-sky-600">{`${item}` + " "}</span>;
+              }
+            })}
           </div>
           <div className="flex gap-4">
             <div
@@ -104,7 +107,10 @@ export default function Comment({
             </div>
           ) : null}
           {idReplay === id ? (
-            <input className="border-solid border-2" onKeyUp={handelInput} />
+            <input
+              className="border-solid border-2  w-64 mt-4 "
+              onKeyUp={handelInput}
+            />
           ) : null}
         </div>
       </div>
