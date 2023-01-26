@@ -110,6 +110,7 @@ export default function Comment({
             <input
               className="border-solid border-2  w-64 mt-4 "
               onKeyUp={handelInput}
+              onMouseOut={() => setIdReplay(0)}
             />
           ) : null}
         </div>
